@@ -9,7 +9,7 @@
 <body>
 
 	<!-- <form action="2_join_check.jsp" method="post">  -->
-	<form action="14_join_check_preparedStatement.jsp" method="post">  <!-- PreparedStatement 작업 후 여기로 가게 변경했다! -->
+	<form action="14_join_check_preparedStatement.jsp" method="post">  
 		이름 : <input type="text" name="name" size="10"><br>
 		아이디 : <input type="text" name="id" size="10"><br>
 		비밀번호 : <input type="password" name="pw" size="10"><br>
