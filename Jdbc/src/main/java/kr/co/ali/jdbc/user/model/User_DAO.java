@@ -84,4 +84,95 @@ public class User_DAO {
 	}
 	
 	
+	
+	
+	
+	
+	
+	// DB로부터 모든 회원정보를 가져오는 메서드 선언
+	public List<User_VO> userSelectAll() {
+		
+		List<User_VO> userList = new ArrayList<>();
+		
+		String sql = "SELECT * FROM users";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DriverManager.getConnection(url, uid, upw);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				User_VO users = new User_VO(
+						rs.getString("name"),
+						rs.getString("id"),
+						rs.getString("pw"),
+						rs.getString("phone1"),
+						rs.getString("phone2"),
+						rs.getString("phone3"),
+						rs.getString("gender")
+						);
+				
+				userList.add(users);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close(); pstmt.close(); rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return userList;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	// 회원탈퇴를 처리하는 메서드 선언
+	public int userDelete(String id) {
+		int rn = 0;
+		
+		String sql = "DELETE FROM users WHERE id=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DriverManager.getConnection(url, uid, upw);
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rn = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close(); pstmt.close(); 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return rn;
+		
+	}
+	
+	
+	
 }

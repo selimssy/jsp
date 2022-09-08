@@ -27,7 +27,8 @@
 		<input type="radio" name="gender" value="여">여 <br>
 		
 		<input type="submit" value="회원가입">
-		
+		&nbsp;&nbsp;
+		<a href="18_show_all_users.jsp">모든 회원 정보 보기</a>
 	</form>
 
 

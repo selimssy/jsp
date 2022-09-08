@@ -1,9 +1,10 @@
+<%@page import="kr.co.ali.jdbc.user.model.User_DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>    
 
 
-<%	// 회원탈퇴  
+<%--	// 회원탈퇴  
 	
 	String id = (String)session.getAttribute("user_id");
 	
@@ -49,4 +50,23 @@
 		}
 	}
 	
-	%>
+	--%>
+	
+	
+	
+<%	String id = (String)session.getAttribute("user_id");
+	
+	User_DAO dao = User_DAO.getInstance();
+	int rn = dao.userDelete(id);
+
+	if(rn == 1){
+		System.out.print("회원 삭제 성공");
+		session.invalidate();  // 회원탈퇴 했으니까 세션 전부 삭제해야!
+		response.sendRedirect("4_login_form.jsp");
+	}else{
+		response.sendRedirect("6_login_welcome.jsp");
+	}
+
+
+
+%>	

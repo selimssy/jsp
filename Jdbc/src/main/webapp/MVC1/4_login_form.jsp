@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<form action="5_login_check.jsp" method="post">
+	<form action="15_login_check_preparedStatement.jsp" method="post">
 		아이디 : <input type="text" name="id" size="10"><br>
 		비밀번호 : <input type="password" name="pw" size="10"><br>
 		<input type="submit" value="로그인">
