@@ -1,9 +1,7 @@
 package kr.co.ali.jdbc.basic;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 import java.util.Scanner;
 
 public class Jdbc_Select2 {
