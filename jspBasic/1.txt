@@ -94,3 +94,26 @@ if(id.equals("abc1234")){
 
 
 
+
+MVC2는 모델, 컨트롤러, 뷰가 분리
+MVC1은 모델 따로 / 컨트롤러와 뷰가 혼재
+
+
+
+
+
+
+
+
+커넥션 풀 설정: Eclipse -> Server폴더 -> context.xml 수정
+<Resource
+	auth="Container"   // 서버 내부에 권한을 준다
+	driverClassName = "com.mysql.jdbc.Driver"      // jdbc 드라이버 호출(여기서 했으니까 이제 안해도 된다!)
+	url = "jdbc:mysql://localhost:3306/jsp_practice"      // db위치
+	username = "jsp"   
+	password = "jsp"
+	name = "jdbc/mysql"          // 커넥션풀에서 꺼내 쓸 때 커넥션풀 이름을 뭐로 할건지
+	type="javax.sql.DataSource"  //커넥션풀을 담는 객체(정해져있는거)
+	maxActive = "300"    // 최대 커넥션풀에 활성화된 커넥션을 몇 개 담을건지
+	maxWait = "1000"    // 300개 다 소진하면 1초 기다리겠다(그리고 다시 커넥션 만들겠다)
+/> 
