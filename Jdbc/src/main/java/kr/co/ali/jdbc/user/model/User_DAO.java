@@ -3,21 +3,34 @@ package kr.co.ali.jdbc.user.model;
 import java.sql.*;
 import java.util.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 // DAO 클래스는 DB작업을 전담처리한다!
 // 메모리 이유로 단 1개의 객체만을 생성(싱글톤)
 
 public class User_DAO {
 	
+	/*  커넥션풀에서 다 썼다!!
 	private String url = "jdbc:mysql://localhost:3306/jsp_practice";
 	private String uid = "jsp";
-	private String upw = "jsp";
+	private String upw = "jsp";   */
+	private DataSource ds;  // 여기에 커넥션풀 담아올꺼다     // javax.sql꺼 import 해야!
+	
 	
 	
 	// 싱글톤 패턴 클래스 생성
 	// 1. 클래스 외부에서 객체를 생성할 수 없도록 생성자에 private 제한을 붙임
 	private User_DAO() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");   // 커넥션풀에서 썼다
+			
+			// DAO객체 생성되자마자 context.xml파일 읽어서 커넥션풀 땡겨오도록
+			Context ct = new InitialContext(); // context.xml을 읽어들이기 위한 객체 생성  // javax.naming꺼 import
+			ds = (DataSource)ct.lookup("java:comp/env/jdbc/mysql");   // 커넥션풀 name 속성인데 java:comp/env/ 까지는 정해져있고 그 뒤에 커넥션풀 이름(name 속성값) 적어준다 
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,7 +69,8 @@ public class User_DAO {
 		int rn = 0;
 		
 		try {
-			conn = DriverManager.getConnection(url, uid, upw);
+			//conn = DriverManager.getConnection(url, uid, upw);  // 커넥션풀 쓸거라 아래코드로
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, users.getName());
 			pstmt.setString(2, users.getId());
@@ -101,7 +115,8 @@ public class User_DAO {
 		ResultSet rs = null;
 		
 		try {
-			conn = DriverManager.getConnection(url, uid, upw);
+			//conn = DriverManager.getConnection(url, uid, upw);
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -152,7 +167,8 @@ public class User_DAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			conn = DriverManager.getConnection(url, uid, upw);
+			//conn = DriverManager.getConnection(url, uid, upw);
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, id);
