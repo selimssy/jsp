@@ -130,3 +130,21 @@ MVC1은 모델 따로 / 컨트롤러와 뷰가 혼재
 
 
 jspf 파일 : 조각파일(include하려고 만든 파일)
+
+
+
+
+(이것도 약식이지만)
+db 테이블 생성 -> 모델(VO, DAO) 구성
+
+
+
+
+
+a태그에 href='signup' 이렇게 되있으면 링크를 id가 signup인 곳으로 링크를 건 것(t는 회원가입창 div의 id를 signup으로 걸었다)
+
+
+
+
+
+input태그 required = "required" 이면 필수입력!
