@@ -197,7 +197,7 @@ $(function(){
 			chk1 = false;
 		}
 		
-		//아이디 유효성검사
+		//아이디 유효성검사 
 		else if(!getIdCheck.test($("#user_id").val())){  // test : 정규식검사 테스트
 			$('#user_id').css("background-color", "pink");
 			$('#idChk').html('<b style="font-size:16px;color:red;">[영문자,숫자 4-14자로 입력하라구~]</b>');	  
