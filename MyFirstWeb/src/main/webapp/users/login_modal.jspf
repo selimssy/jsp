@@ -201,7 +201,7 @@ $(function(){
 		else if(!getIdCheck.test($("#user_id").val())){  // test : 정규식검사 테스트
 			$('#user_id').css("background-color", "pink");
 			$('#idChk').html('<b style="font-size:16px;color:red;">[영문자,숫자 4-14자로 입력하라구~]</b>');	  
-			chk1 = false;
+			chk1 = false; 
 		} 
 		//ID 중복확인 비동기 처리
 		else {
