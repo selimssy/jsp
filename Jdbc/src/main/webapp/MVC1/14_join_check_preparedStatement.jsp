@@ -79,7 +79,7 @@
 	User_VO users = new User_VO();
 	users.setId(id);......7개
 	
-	저 모든걸 자바빈을 통해 아래 2줄로!
+	저 모든걸 자바빈을 통해 아래 2줄로!   
  -->
  <% request.setCharacterEncoding("utf-8"); // 얘를 자바빈 코드보다 꼭 먼저써야!!★ %> 
  
