@@ -167,7 +167,7 @@ public class User_DAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			//conn = DriverManager.getConnection(url, uid, upw);
+			//conn = DriverManager.getConnection(url, uid, upw); 
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
